@@ -1,5 +1,6 @@
 package com.crudspring.edsu.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serial;
@@ -24,10 +25,11 @@ public class User implements Serializable {
     private String phone;
     private String password;
 
-
     // relacao a order pedidos, de um usuario que vai ter varios pedidos
+    @JsonIgnore
     @OneToMany(mappedBy = "client")
     private List<Order> orders= new ArrayList<>();
+
 
     public User() {
     }
